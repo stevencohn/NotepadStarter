@@ -587,6 +587,7 @@ BOOL CSystemTray::ShowBalloon(LPCTSTR szText,
 	DWORD   dwIcon   /*=NIIF_NONE*/,
 	UINT    uTimeout /*=10*/)
 {
+	return FALSE;
 #ifndef SYSTEMTRAY_USEW2K
 	return FALSE;
 #else

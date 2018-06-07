@@ -41,7 +41,7 @@
 #define MAX_TOOLTIP_LEN 64
 #define MAX_TITLE_LEN 100
 
-static CSystemTray _TrayIcon;
+//static CSystemTray _TrayIcon;
 bool bDebug = false;
 static std::wstring filename;
 #ifndef length_of
@@ -54,7 +54,7 @@ std::wstring g_NppFilepath;
 DWORD  g_Pid = 0xFFFFFFFF;
 
 void StopNotepad() {
-	_TrayIcon.RemoveIcon();
+	//_TrayIcon.RemoveIcon();
 	ExitProcess(0);
 }
 
@@ -160,8 +160,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			return DefWindowProc(hWnd, message, wParam, lParam);
 		}
 		break;
-	case WM_ICON_NOTIFY:
-		return _TrayIcon.OnTrayNotification(wParam, lParam);
+	//case WM_ICON_NOTIFY:
+	//	return _TrayIcon.OnTrayNotification(wParam, lParam);
 
 	case WM_COMMAND:
 		wmId = LOWORD(wParam);
@@ -230,18 +230,18 @@ BOOL InitInstance(HINSTANCE hInstance, std::wstring arg/*, int nCmdShow*/)
 		return FALSE;
 	}
 
-	if (!_TrayIcon.Create(hInstance,
-		hWnd,                            // Parent window
-		WM_ICON_NOTIFY,                  // Icon notify message to use
-		arg.c_str(),                     // tooltip
-		::LoadIcon(hInstance, (LPCTSTR)IDI_NOTEPAD_STARTER_ICON),
-		IDR_CNTXT_MENU))
-	{
-		// Create the icon failed.
-		return FALSE;
-	}
+	//if (!_TrayIcon.Create(hInstance,
+	//	hWnd,                            // Parent window
+	//	WM_ICON_NOTIFY,                  // Icon notify message to use
+	//	arg.c_str(),                     // tooltip
+	//	::LoadIcon(hInstance, (LPCTSTR)IDI_NOTEPAD_STARTER_ICON),
+	//	IDR_CNTXT_MENU))
+	//{
+	//	// Create the icon failed.
+	//	return FALSE;
+	//}
 
-	_TrayIcon.SetMenuDefaultItem(IDM_EXIT);
+	//_TrayIcon.SetMenuDefaultItem(IDM_EXIT);
 
 	return TRUE;
 }
@@ -474,7 +474,7 @@ int WINAPI wWinMain(
 	if (bWaitForNotepadClose) {
 		// Wait until child process to exit.
 		std::wstring ballonMsg = std::wstring(CAPTION) + filename;
-		_TrayIcon.ShowBalloon(TEXT("Double click this icon when editing is finished..."), ballonMsg.c_str(), 1);
+		//_TrayIcon.ShowBalloon(TEXT("Double click this icon when editing is finished..."), ballonMsg.c_str(), 1);
 	}
 	//MessageBoxW(NULL, cmd.c_str(), L"NotepadStarter initial command line", MB_OK);
 	STARTUPINFO si;
@@ -494,7 +494,7 @@ int WINAPI wWinMain(
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		}
-		_TrayIcon.RemoveIcon();
+		//_TrayIcon.RemoveIcon();
 		CloseHandle(oProcessInfo.hProcess);
 		CloseHandle(oProcessInfo.hThread);
 	}

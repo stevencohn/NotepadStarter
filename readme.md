@@ -1,4 +1,16 @@
 ## Introduction
+
+<div style="color:red">
+This is a clone of the plugin written by Yonggang Luo. It is customized to suppress the
+system tray notification balloon that appears when you double-click a file to open it in
+Notepad++. The changes are minimal:
+
+* NotepadStarter.cpp - commented out all references to the `_TrayIcon` variable
+* SystemTraySDK.cpp - immediate `return false` from ShowBalloon method
+* Changed the project build properties to VS2017
+</div>
+
+
 This tool designed as a Notepad++ plugin by [Yonggang Luo](luoyonggang(at)gmail.com), when
 it installed as a Notepad++ plugin, it's will automatically replace the system default notepad.exe
 application with Notepad++ (Without need for removing anything from the windows system.).
