@@ -1,6 +1,6 @@
 ## Introduction
 
-_This is a clone of the plugin written by Yonggang Luo. It is customized to suppress the
+_This is a fork of the plugin written by Yonggang Luo. It is customized to suppress the
 system tray notification balloon that appears when you double-click a file to open it in
 Notepad++. The changes are minimal:_
 
